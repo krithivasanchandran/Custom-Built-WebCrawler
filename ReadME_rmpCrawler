@@ -1,2 +1,0 @@
-Writing the Business Logic for the fetched text (Html Source) . Extensive use of String Immutable Object is  used 
-to achieve the desired function of writing it to the DAO Crawler ( Database). Substring , IndexOf , CharAt is the most commonly used String functions.
