@@ -48,7 +48,9 @@ public void visit(Page page){
 			 int startpoint = text.indexOf("HomeAboutTop ListsProfessors Strike Back",0);
 			 System.out.println(" index of :" + text.indexOf("HomeAboutTop ListsProfessors Strike Back",0));
 			 //String contains the body of the ratings
-			 String mainbody = text.substring(startpoint+"HomeAboutTop ListsProfessors Strike Back".length(), text.length());
+			 String mainbody = text.substring(startpoint+"HomeAboutTop ListsProfessors Strike Back".length(), text.length
+
+());
 			 
 			/*  builder.append(mainbody.trim());
 			 try {
@@ -90,35 +92,55 @@ private Professor parseProfessorHeaderDetails(String headerDetails){
 	
 	
 		
-		int countryDelimiterStartIndex = headerDetails.indexOf("»", 0);
+		int countryDelimiterStartIndex = headerDetails.indexOf("Â»", 0);
 		  
-		if(headerDetails.indexOf("»", countryDelimiterStartIndex+1)!=-1){
-			int stateDelimiterStartIndex = headerDetails.indexOf("»", countryDelimiterStartIndex+1);	
-		   if( headerDetails.indexOf("»", stateDelimiterStartIndex+1)!=-1){
-			   	int schoolDelimiterStartIndex = headerDetails.indexOf("»", stateDelimiterStartIndex+1);
-			   	if(headerDetails.indexOf("»", schoolDelimiterStartIndex+1)!=-1){
-			   		int professorDelimiterStartIndex = headerDetails.indexOf("»", schoolDelimiterStartIndex+1);
+		if(headerDetails.indexOf("Â»", countryDelimiterStartIndex+1)!=-1){
+			int stateDelimiterStartIndex = headerDetails.indexOf("Â»", countryDelimiterStartIndex+1);	
+		   if( headerDetails.indexOf("Â»", stateDelimiterStartIndex+1)!=-1){
+			   	int schoolDelimiterStartIndex = headerDetails.indexOf("Â»", stateDelimiterStartIndex+1);
+			   	if(headerDetails.indexOf("Â»", schoolDelimiterStartIndex+1)!=-1){
+			   		int professorDelimiterStartIndex = headerDetails.indexOf("Â»", schoolDelimiterStartIndex+1);
 			   		int cityLocationDetails = headerDetails.indexOf(":", professorDelimiterStartIndex+1);
 			   		
-			   	String Country = headerDetails.substring(countryDelimiterStartIndex+1 ,headerDetails.indexOf("»", countryDelimiterStartIndex+1)).trim();
-			   	String State = headerDetails.substring(stateDelimiterStartIndex+1, headerDetails.indexOf("»", stateDelimiterStartIndex+1)).trim();
-			   	String SchoolName = headerDetails.substring(schoolDelimiterStartIndex+1, headerDetails.indexOf("»", schoolDelimiterStartIndex+1)).trim();
-			   	String ProfessorNameUnTrimmed = headerDetails.substring(professorDelimiterStartIndex+1, headerDetails.indexOf(":", professorDelimiterStartIndex+1));
+			   	String Country = headerDetails.substring(countryDelimiterStartIndex+1 ,headerDetails.indexOf("Â»", 
+
+countryDelimiterStartIndex+1)).trim();
+			   	String State = headerDetails.substring(stateDelimiterStartIndex+1, headerDetails.indexOf("Â»", 
+
+stateDelimiterStartIndex+1)).trim();
+			   	String SchoolName = headerDetails.substring(schoolDelimiterStartIndex+1, headerDetails.indexOf("Â»", 
+
+schoolDelimiterStartIndex+1)).trim();
+			   	String ProfessorNameUnTrimmed = headerDetails.substring(professorDelimiterStartIndex+1, 
+
+headerDetails.indexOf(":", professorDelimiterStartIndex+1));
 			    int citydemiliter = headerDetails.indexOf("Location:",0);
 			    int departmentdemiliter = headerDetails.indexOf("Department:",citydemiliter);
 			    
 			   // if(":".equals(headerDetails.charAt(citydemiliter+"Locatio".length()))){
-			 	String cityLocatedIn = headerDetails.substring(citydemiliter+"Location:".length(), headerDetails.indexOf(",", citydemiliter+"Location:".length())).trim();
+			 	String cityLocatedIn = headerDetails.substring(citydemiliter+"Location:".length(), 
+
+headerDetails.indexOf(",", citydemiliter+"Location:".length())).trim();
 			  	int SchoolDelimiter = ProfessorNameUnTrimmed.indexOf("School");
 			  	String ProfessorUnEditedNameDetails = ProfessorNameUnTrimmed.substring(0, SchoolDelimiter-1);
 			   	
-			   	String OriginatedProfessorName =  ProfessorUnEditedNameDetails.substring(0, Math.round(ProfessorUnEditedNameDetails.length()/2)-1).trim();
+			   	String OriginatedProfessorName =  ProfessorUnEditedNameDetails.substring(0, Math.round
+
+(ProfessorUnEditedNameDetails.length()/2)-1).trim();
 			   	
-			   String departmentName =  headerDetails.substring(departmentdemiliter+"Department:".length(), headerDetails.indexOf(".",departmentdemiliter+"Department:".length())-1).trim();
+			   String departmentName =  headerDetails.substring(departmentdemiliter+"Department:".length(), 
+
+headerDetails.indexOf(".",departmentdemiliter+"Department:".length())-1).trim();
 			   
-			  //	System.out.println("Country is =-----------------> " + Country + State + SchoolName + "OriginatedProfessorName--------->" +OriginatedProfessorName + "City Located In ---------> " +cityLocatedIn + " DEPARTMENT NAME ---------------> " + departmentName);
+			  //	System.out.println("Country is =-----------------> " + Country + State + SchoolName + 
+
+"OriginatedProfessorName--------->" +OriginatedProfessorName + "City Located In ---------> " +cityLocatedIn + " DEPARTMENT NAME 
+
+---------------> " + departmentName);
 			   
-			  	dao.insertProfessorDetails(Country,State,SchoolName,cityLocatedIn,OriginatedProfessorName,departmentName);
+			  	dao.insertProfessorDetails
+
+(Country,State,SchoolName,cityLocatedIn,OriginatedProfessorName,departmentName);
 			   
 				   prof.setOriginatedProfessorName(OriginatedProfessorName);
 				   prof.setDepartmentName(departmentName);
@@ -137,11 +159,17 @@ private void parseProfessorComments(String mainbody, Professor profdetails){
 	 int insertloopexit=0;
 	int mainBodyLength =  mainbody.length();
 	 
-	 String comments = mainbody.substring(mainbody.indexOf("UserCommentsandRatings",0)+"UserCommentsandRatings".length()+"ProfessorFeedbackDateClassRatingComment".length(), mainbody.indexOf("~~~",mainbody.indexOf("UserCommentsandRatings",0)+"ProfessorFeedbackDateClassRatingComment".length()));
+	 String comments = mainbody.substring(mainbody.indexOf("UserCommentsandRatings",0)+"UserCommentsandRatings".length
+
+()+"ProfessorFeedbackDateClassRatingComment".length(), mainbody.indexOf("~~~",mainbody.indexOf
+
+("UserCommentsandRatings",0)+"ProfessorFeedbackDateClassRatingComment".length()));
 	
 	 if(mainbody.indexOf("~~~",0)!=-1){
 		 
-   String bcd = mainbody.substring(mainbody.indexOf(comments) + comments.length(), mainbody.indexOf("~~~",mainbody.indexOf(comments) + comments.length()+4));
+   String bcd = mainbody.substring(mainbody.indexOf(comments) + comments.length(), mainbody.indexOf("~~~",mainbody.indexOf(comments) + 
+
+comments.length()+4));
   			 
    mainbody= mainbody.substring(mainbody.indexOf(bcd) + bcd.length(), mainBodyLength);
   
@@ -150,9 +178,15 @@ private void parseProfessorComments(String mainbody, Professor profdetails){
   	String second = mainbody.substring(3,mainbody.indexOf("~~~", 4));
   	
    	
-  	String trimmedsecond = second.indexOf("Rater Interest",0)!= -1 ? second.substring(second.indexOf("Rater Interest",0)+"Rater Interest".length()+3,second.length()): second.substring(second.indexOf("Clarity",0)+"Clarity".length()+3,second.length()) ;
+  	String trimmedsecond = second.indexOf("Rater Interest",0)!= -1 ? second.substring(second.indexOf("Rater Interest",0)+"Rater 
+
+Interest".length()+3,second.length()): second.substring(second.indexOf("Clarity",0)+"Clarity".length()+3,second.length()) ;
   	
-  	if(trimmedsecond != null && !(trimmedsecond.indexOf("No comments")!=-1)  && !(trimmedsecond.indexOf("Easiness")!=-1) && !(trimmedsecond.indexOf("Clarity")!=-1) && !(trimmedsecond.indexOf("Rater Interest")!=-1) &&  !(trimmedsecond.indexOf("Helpfulness")!=-1)){
+  	if(trimmedsecond != null && !(trimmedsecond.indexOf("No comments")!=-1)  && !(trimmedsecond.indexOf("Easiness")!=-1) && !
+
+(trimmedsecond.indexOf("Clarity")!=-1) && !(trimmedsecond.indexOf("Rater Interest")!=-1) &&  !(trimmedsecond.indexOf("Helpfulness")!
+
+=-1)){
   	dao.insertProfessorComments(trimmedsecond,profdetails);
   	}
   	  mainbody =  mainbody.substring(mainbody.indexOf(second)+ second.length(),mainbody.length());
